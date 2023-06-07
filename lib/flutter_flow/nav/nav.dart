@@ -3,6 +3,7 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_spinkit/flutter_spinkit.dart';
 import 'package:go_router/go_router.dart';
+import 'package:jansakti_admin/pages/system_config/system_config_widget.dart';
 import 'package:page_transition/page_transition.dart';
 import '../flutter_flow_theme.dart';
 import '../../backend/backend.dart';
@@ -254,6 +255,11 @@ GoRouter createRouter(AppStateNotifier appStateNotifier) => GoRouter(
           name: 'CaptainsDashboardCopy',
           path: '/captainsDashboardCopy',
           builder: (context, params) => CaptainsDashboardCopyWidget(),
+        ),
+        FFRoute(
+          name: 'SystemConfig',
+          path: '/systemConfig',
+          builder: (context, params) => SystemconfigWidget(),
         ),
         FFRoute(
           name: 'ScoutsDashboardCopy',

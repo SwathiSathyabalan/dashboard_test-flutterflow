@@ -21,6 +21,7 @@ class WebNavWidget extends StatefulWidget {
     this.colour5,
     this.colour6,
     this.colour7,
+    required this.color8,
   }) : super(key: key);
 
   final Color? colour1;
@@ -30,6 +31,7 @@ class WebNavWidget extends StatefulWidget {
   final Color? colour5;
   final Color? colour6;
   final Color? colour7;
+  final Color? color8;
 
   @override
   _WebNavWidgetState createState() => _WebNavWidgetState();
@@ -63,32 +65,6 @@ class _WebNavWidgetState extends State<WebNavWidget> {
   Widget build(BuildContext context) {
     context.watch<FFAppState>();
 
-    return StreamBuilder<List<RecruitersRecord>>(
-        stream: queryRecruitersRecord(
-        singleRecord: true,
-    ),
-    builder: (context, snapshot) {
-    // Customize what your widget looks like when it's loading.
-    if (!snapshot.hasData) {
-    return Center(
-    child: SizedBox(
-    width: 80,
-    height: 80,
-    child: SpinKitPulse(
-    color: FlutterFlowTheme.of(context).accent1Old,
-    size: 80,
-    ),
-    ),
-    );
-    }
-    List<RecruitersRecord> mainNavCaptainsRecordList = snapshot.data!;
-    // Return an empty Container when the item does not exist.
-    if (snapshot.data!.isEmpty) {
-    return Container();
-    }
-    final mainNavCaptainsRecord = mainNavCaptainsRecordList.isNotEmpty
-    ? mainNavCaptainsRecordList.first
-        : null;
     return Container(
       width: 302.7,
       height: double.infinity,
@@ -309,17 +285,7 @@ class _WebNavWidgetState extends State<WebNavWidget> {
                 hoverColor: Colors.transparent,
                 highlightColor: Colors.transparent,
                 onTap: () async {
-                  context.pushNamed('WorkersDashboardCopy',
-                    queryParams: {
-                      'capDoc': serializeParam(
-                        mainNavCaptainsRecord,
-                        ParamType.Document,
-                      ),
-                    }.withoutNulls,
-                    extra: <String, dynamic>{
-                      'capDoc': mainNavCaptainsRecord,
-                    },
-                  );
+                  context.pushNamed('WorkersDashboardCopy');
 
                   FFAppState().update(() {
                     FFAppState().agesort = '0';
@@ -484,7 +450,61 @@ class _WebNavWidgetState extends State<WebNavWidget> {
                 ),
               ),
             ),
-            Expanded(
+            // Generated code for this Container Widget...
+            Padding(
+              padding: EdgeInsetsDirectional.fromSTEB(0, 0, 0, 24),
+              child: InkWell(
+                splashColor: Colors.transparent,
+                focusColor: Colors.transparent,
+                hoverColor: Colors.transparent,
+                highlightColor: Colors.transparent,
+                onTap: () async {
+                  context.pushNamed('SystemConfig');
+                },
+                child: Container(
+                  width: double.infinity,
+                  decoration: BoxDecoration(
+                    color: widget.color8,
+                    borderRadius: BorderRadius.circular(12),
+                  ),
+                  child: Padding(
+                    padding: EdgeInsetsDirectional.fromSTEB(12, 12, 12, 12),
+                    child: Row(
+                      mainAxisSize: MainAxisSize.max,
+                      mainAxisAlignment: MainAxisAlignment.start,
+                      children: [
+                        Container(
+                          width: 30,
+                          height: 30,
+                          decoration: BoxDecoration(),
+                          child: Image.asset(
+                            'assets/images/Setting.png',
+                            width: 100,
+                            height: 100,
+                            fit: BoxFit.cover,
+                          ),
+                        ),
+                        Expanded(
+                          child: Padding(
+                            padding: EdgeInsetsDirectional.fromSTEB(12, 0, 0, 0),
+                            child: Text(
+                              'SYSTEM CONFIG',
+                              style: FlutterFlowTheme.of(context).bodySmall.override(
+                                fontFamily: 'Poppins',
+                                color: FlutterFlowTheme.of(context).primaryText,
+                                fontSize: 20,
+                              ),
+                            ),
+                          ),
+                        ),
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            )
+
+            ,Expanded(
               child: Padding(
                 padding: EdgeInsetsDirectional.fromSTEB(0.0, 0.0, 0.0, 16.0),
                 child: Column(
@@ -607,6 +627,5 @@ class _WebNavWidgetState extends State<WebNavWidget> {
         ),
       ),
     );
-  },);
-}
+ }
 }
