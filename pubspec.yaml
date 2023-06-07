@@ -96,6 +96,8 @@ dependencies:
   video_player_platform_interface: 6.1.0
   video_player_web: 2.0.15
   image_network: ^2.5.2
+  http: ^0.13.4
+  aligned_dialog: ^0.0.7
 
 
   # The following adds the Cupertino Icons font to your application.
